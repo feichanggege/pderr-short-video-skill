@@ -4,67 +4,53 @@
 
 ---
 
-## 目录结构
+## 安装方式
 
+### clawdhub（推荐）
+
+```bash
+# 安装到 ~/.workbuddy/skills/
+npx clawdhub install pderr-short-video-skill
+
+# 或指定目录
+clawdhub install pderr-short-video-skill --dir ~/.workbuddy/skills
 ```
-pderr-short-video-skill/
-├── SKILL.md                    # 【主入口】PDERR总调度
-├── short-video-script/
-│   └── SKILL.md                # 文案执行：买方思维+爆款结构+写作金标准
-├── adversarial-review/
-│   └── SKILL.md                # 对抗审查：5维度打分，≥80通过
-├── retrospective/
-│   └── SKILL.md                # 复盘迭代：写入记忆，自进化
-├── examples/
-│   ├── ai-boss-button.md       # 示例1：AI老板扣子（淘宝电商）
-│   └── shanyun-soup.md         # 示例2：山云汤料（视频号IP）
-└── README.md
+
+### 手动安装
+
+```bash
+# 克隆到 skills 目录
+git clone https://github.com/feichanggege/pderr-short-video-skill.git ~/.workbuddy/skills/pderr-short-video-skill
 ```
 
 ---
 
-## 快速开始
+## 调用方式
 
-### OpenClaw / WorkBuddy 调用方式
+### OpenClaw / WorkBuddy
 
-将 `pderr-orchestrator` 目录复制到 `~/.workbuddy/skills/`：
+安装后在对话中直接说"走 PDERR 工作流写短视频文案"，Agent 自动加载。
 
-```bash
-cp -r pderr-short-video-skill ~/.workbuddy/skills/pderr-orchestrator
-```
+### Claude Code / Claude Desktop
 
-或分别安装各模块：
-
-```bash
-# 安装全部模块
-cp -r short-video-script ~/.workbuddy/skills/
-cp -r adversarial-review ~/.workbuddy/skills/
-cp -r retrospective ~/.workbuddy/skills/
-cp -r SKILL.md ~/.workbuddy/skills/pderr-orchestrator/SKILL.md
-```
-
-### Claude Code / Claude Desktop 调用方式
-
-将 Skill 文件路径写入项目配置或直接用提示词调用：
+将以下内容加入 System Prompt 或项目 `.claude.md`：
 
 ```markdown
-你是一个短视频文案专家。每次创作短视频文案时，严格按以下PDERR工作流执行：
+你是一个短视频文案专家。每次创作短视频文案时，严格按 PDERR 工作流执行：
 
-1. 前置建模：先完成买方思维3问+价值维度+5段骨架
+1. 前置建模：完成买方思维3问+价值维度+5段骨架
 2. 规划：确认产品/人群/平台/时长/目标
 3. 拆解：逐秒框架设计
 4. 执行：产出完整脚本（标题+封面+口播+字幕）
 5. 审查：5维度打分，≥80通过，<80打回修改（最多5轮）
 6. 复盘：记录经验教训
 
-详细规范见：short-video-script/SKILL.md
-审查规范见：adversarial-review/SKILL.md
-复盘规范见：retrospective/SKILL.md
+详细规范见：https://github.com/feichanggege/pderr-short-video-skill
 ```
 
-### 直接引用 SKILL.md 内容
+### 直接引用 SKILL.md
 
-将 `SKILL.md` 的内容粘贴到你的 AI 系统的 System Prompt 或 Custom Instructions 中。
+将 `SKILL.md` 内容粘贴到 AI 系统的 Custom Instructions 或 System Prompt 中即可。
 
 ---
 
@@ -132,7 +118,6 @@ cp -r SKILL.md ~/.workbuddy/skills/pderr-orchestrator/SKILL.md
 - 封面文字（≤10字）
 - 逐秒口播文案
 - 字幕文案
-- 评论区置顶（可选）
 - 发布正文描述（可选）
 
 ---
@@ -186,6 +171,26 @@ cp -r SKILL.md ~/.workbuddy/skills/pderr-orchestrator/SKILL.md
 
 ---
 
+## 目录结构
+
+```
+pderr-short-video-skill/
+├── SKILL.md                    # 【主入口】PDERR总调度
+├── short-video-script/
+│   └── SKILL.md                # 文案执行：买方思维+爆款结构+写作金标准
+├── adversarial-review/
+│   └── SKILL.md                # 对抗审查：5维度打分，≥80通过
+├── retrospective/
+│   └── SKILL.md                # 复盘迭代：写入记忆，自进化
+├── examples/
+│   ├── ai-boss-button.md       # 示例1：AI老板扣子（淘宝电商）
+│   └── shanyun-soup.md         # 示例2：山云汤料（视频号IP）
+├── CLAUDE.md                   # Claude Code 调用提示词
+└── README.md
+```
+
+---
+
 ## 示例输出
 
 详见 `examples/` 目录：
@@ -198,7 +203,7 @@ cp -r SKILL.md ~/.workbuddy/skills/pderr-orchestrator/SKILL.md
 
 | Skill | 作用 | 触发时机 |
 |-------|------|---------|
-| `pderr-orchestrator` | 总调度，串联六阶段 | 任务开始时加载 |
+| `pderr-short-video-skill` | 总调度，串联六阶段 | 任务开始时加载 |
 | `short-video-script` | 文案执行核心逻辑 | 执行阶段加载 |
 | `adversarial-review` | 对抗式审查打分 | 审查阶段加载 |
 | `retrospective` | 复盘与记忆写入 | 任务完成时加载 |
