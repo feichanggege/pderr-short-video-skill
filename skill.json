@@ -1,0 +1,17 @@
+{
+  "name": "pderr-short-video-skill",
+  "version": "1.0.0",
+  "description": "PDERR 短视频文案工作流 Skill，包含建模→规划→拆解→执行→审查→复盘六阶段闭环",
+  "author": "feichanggege",
+  "tags": ["short-video", "copywriting", "pderr", "tiktok", "xiaohongshu", "video-account"],
+  "platform": "openclaw,claudecode,workbuddy",
+  "files": [
+    "SKILL.md",
+    "short-video-script/SKILL.md",
+    "adversarial-review/SKILL.md",
+    "retrospective/SKILL.md",
+    "CLAUDE.md",
+    "README.md",
+    "examples/"
+  ]
+}
