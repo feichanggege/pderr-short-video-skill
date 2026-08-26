@@ -1,3 +1,5 @@
+
+
 # PDERR 短视频文案工作流 Skill
 
 > 短视频爆款文案创作 SOP，包含**建模 → 规划 → 拆解 → 执行 → 审查 → 复盘**六阶段闭环，适用于抖音、视频号、小红书、淘宝等全平台。
@@ -118,7 +120,7 @@ git clone https://github.com/feichanggege/pderr-short-video-skill.git ~/.workbud
 - 封面文字（≤10字）
 - 逐秒口播文案
 - 字幕文案
-- 发布正文描述（可选）
+- 发布正文描述（≤300字）
 
 ---
 
